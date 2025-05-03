@@ -79,8 +79,8 @@ body {
     z-index: 1; /* Stack text above image */
     /* Styles for the text part if needed, e.g., background for readability */
     background-color: rgba(192, 192, 192, 0.7); /* Semi-transparent gray */
-    display: inline-block; */
-    padding: 8px; */
+    display: inline-block;
+    padding: 8px;
 }
 
 #profile-pic {
