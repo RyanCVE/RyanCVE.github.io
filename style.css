@@ -78,15 +78,15 @@ body {
     position: relative; /* Ensure text is above the absolute positioned image */
     z-index: 1; /* Stack text above image */
     /* Styles for the text part if needed, e.g., background for readability */
-    /* background-color: rgba(192, 192, 192, 0.7); /* Semi-transparent gray */
-    /* display: inline-block; */
-    /* padding: 10px; */
+    background-color: rgba(192, 192, 192, 0.7); /* Semi-transparent gray */
+    display: inline-block; */
+    padding: 8px; */
 }
 
 #profile-pic {
     position: absolute;
     left: 50%;
-    bottom: -50px; /* Position overlapping the bottom edge of the header */
+    bottom: -70px; /* Position overlapping the bottom edge of the header */
     transform: translateX(-50%);
     max-width: 150px; /* Adjust as needed */
     height: auto;
