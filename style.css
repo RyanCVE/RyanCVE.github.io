@@ -1,0 +1,203 @@
+/* Windows 95 CSS Theme */
+body {
+    background-color: #008080; /* Teal background, common in Win95 */
+    font-family: 'MS Sans Serif', 'Arial', sans-serif; /* Classic Win95 font */
+    font-size: 12px;
+    margin: 20px;
+}
+
+.window {
+    background-color: #c0c0c0; /* Standard Win95 gray */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-shadow: 1px 1px 0 #000000;
+    padding: 2px;
+    max-width: 800px; /* Limit width for better readability */
+    margin: auto; /* Center the window */
+}
+
+.title-bar {
+    background-color: #000080; /* Dark blue title bar */
+    color: #ffffff;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.title-bar-text {
+    padding-left: 2px;
+}
+
+.title-bar-controls {
+    display: flex;
+}
+
+.title-bar-controls button {
+    width: 16px;
+    height: 14px;
+    margin-left: 2px;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    background-color: #c0c0c0;
+    font-family: 'Marlett', 'Webdings', sans-serif; /* Font for symbols */
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    padding: 0;
+}
+
+.title-bar-controls button[aria-label="Minimize"]::before { content: "0"; }
+.title-bar-controls button[aria-label="Maximize"]::before { content: "1"; }
+.title-bar-controls button[aria-label="Close"]::before { content: "r"; }
+
+.window-body {
+    padding: 15px;
+    background-color: #c0c0c0;
+}
+
+/* Updated Header Styling */
+#banner-header {
+    position: relative; /* Needed for absolute positioning of the image */
+    background-image: url('assets/banner.png');
+    background-size: cover; /* Cover the entire header area */
+    background-position: center;
+    padding: 20px; /* Add some padding */
+    padding-bottom: 75px; /* Extra padding at the bottom to make space for overlapping image */
+    margin-bottom: 80px; /* Increased space below the header/image */
+    text-align: center; /* Center the text content */
+    border-bottom: 1px solid #808080;
+}
+
+.header-content {
+    position: relative; /* Ensure text is above the absolute positioned image */
+    z-index: 1; /* Stack text above image */
+    /* Styles for the text part if needed, e.g., background for readability */
+    /* background-color: rgba(192, 192, 192, 0.7); /* Semi-transparent gray */
+    /* display: inline-block; */
+    /* padding: 10px; */
+}
+
+#profile-pic {
+    position: absolute;
+    left: 50%;
+    bottom: -50px; /* Position overlapping the bottom edge of the header */
+    transform: translateX(-50%);
+    max-width: 150px; /* Adjust as needed */
+    height: auto;
+    /* Embossed border effect */
+    border: 2px solid;
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+    border-right-color: #808080; /* Darker gray */
+    border-bottom-color: #808080; /* Darker gray */
+    box-shadow: 1px 1px 0 #000000; /* Optional subtle shadow */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #808080;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* Simulate square bullets */
+li::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #000000;
+    position: absolute;
+    left: -15px;
+    top: 5px; /* Adjust vertical alignment */
+}
+
+a {
+    color: #0000ff; /* Standard blue link color */
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ff00ff; /* Magenta on hover */
+}
+
+section {
+    margin-bottom: 20px;
+    /* Removed clear: both; as float is gone */
+}
+
+article {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 2px solid #808080; /* Indent experience entries */
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #808080;
+    font-style: italic;
+}
+
+/* Basic button styling */
+button {
+    background-color: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 0 #000000;
+}
+
+button:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+    background-color: #e0e0e0; /* Slightly lighter gray when pressed */
+}
+
