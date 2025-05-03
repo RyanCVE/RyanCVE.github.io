@@ -78,9 +78,9 @@ body {
     position: relative; /* Ensure text is above the absolute positioned image */
     z-index: 1; /* Stack text above image */
     /* Styles for the text part if needed, e.g., background for readability */
-     background-color: rgba(192, 192, 192, 0.7); /* Semi-transparent gray */
+     background-color: rgba(192, 192, 192, 0.8); /* Semi-transparent gray */
      display: inline-block;
-     padding: 7px; 
+     padding: 5px; 
 }
 
 #profile-pic {
@@ -127,8 +127,8 @@ h4 {
 
 p {
     line-height: 2;
-    margin-bottom: 15px;
-	margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 ul {
