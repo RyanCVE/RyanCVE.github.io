@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - MuseScore Studio v4.5.2.251141402</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - MuseScore Studio v4.5.2.251141402</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">MuseScore Studio v4.5.2.251141402</div>
+<div class="app-details">
+<strong>Vendor:</strong> MuseCY SM Ltd | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>MuseScore Studio version 4.5.2.251141402 is a professional-grade music notation and composition software designed for creating, editing, and publishing sheet music. It supports a wide range of musical notation elements, including complex scores, dynamics, articulations, and playback features, enabling users to produce high-quality musical arrangements. The application is primarily used by composers, arrangers, educators, and musicians who require precise notation tools for academic, professional, or creative projects.</p>
+<p>The software provides an intuitive interface with advanced features such as MIDI input, customizable templates, and support for multiple file formats, including MusicXML and MIDI. MuseScore Studio caters to both individual musicians and institutional users, offering collaborative capabilities for ensemble scoring and educational purposes. Its robust functionality makes it suitable for music production, academic research, and live performance preparation.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Install MuseScore-Studio-4.5.2.251141402-x86_64 using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "MuseScore-Studio-4.5.2.251141402-x86_64.msi" -ArgumentList "/QN ALLUSERS=1"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\MuseScore_Studio_v4.5.2.251141402_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+<div class="command-description">Remove application files</div>
+<div class="code-block">Remove-ADTFile -Path "C:\Users\[USERNAME]\Desktop\MuseScore Studio 4.lnk" -ErrorAction Continue</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Uninstall application using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{DD31DE8B-E51C-4B6A-B8AC-FF8E1EE215C2}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\MuseScore_Studio_v4.5.2.251141402_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

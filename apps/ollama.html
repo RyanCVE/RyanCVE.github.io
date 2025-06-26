@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Ollama v0.9.0.0</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Ollama v0.9.0.0</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Ollama v0.9.0.0</div>
+<div class="app-details">
+<strong>Vendor:</strong> Ollama Inc. | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Ollama by Ollama Inc. is a specialized software application designed to facilitate the management and execution of automated workflows within enterprise environments. It provides a structured framework for tracking application states and handling system-level operations, ensuring consistency across deployments.</p>
+<p>The software is primarily used by IT administrators and system integrators who require reliable tools for maintaining application lifecycle management in controlled environments. The application supports seamless tracking of installed components through registry-based monitoring, enabling precise oversight of software states. Its functionality caters to professionals managing large-scale deployments, particularly in research institutions and corporate IT departments where traceability and system integrity are critical. Ollama serves as a foundational tool for organizations prioritizing standardized software management practices.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Execute OllamaSetup installer</div>
+<div class="code-block">Start-ADTProcess -FilePath "OllamaSetup.exe" -ArgumentList "/SP- /VERYSILENT /NORESTART /DIR= "C:\Program Files\Ollama " " -WaitForMsiExec</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">set-ADTRegistryKey -Key "HKLM:\SOFTWARE\InstalledApps\AppPackaging\CSCE\Arts\RM\Ollama_v0.9.0.0_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Execute unins000 installer</div>
+<div class="code-block">Start-ADTProcess -FilePath "C:\Program Files\Ollama\unins000.exe" -ArgumentList "/S" -WaitForMsiExec</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Ollama_v0.9.0.0_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

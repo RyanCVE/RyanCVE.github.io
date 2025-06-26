@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Canva v</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Canva v</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Canva v</div>
+<div class="app-details">
+<strong>Vendor:</strong> Canva | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Canva is a cloud-based graphic design platform that enables users to create visual content such as presentations, social media graphics, posters, and marketing materials. The software provides a drag-and-drop interface with pre-designed templates, stock images, and customizable design elements, streamlining the creation of professional-quality visuals. It is primarily used by marketers, educators, small business owners, and non-designers who require an accessible tool for producing visually engaging content without advanced design expertise.</p>
+<p>The platform supports collaborative workflows, allowing multiple users to edit and share designs in real time. Canva also includes features for brand consistency, such as custom color palettes and font libraries, making it suitable for teams managing corporate or organizational branding. Its target user base extends to professionals in communications, HR, and academia who need efficient tools for creating polished visual assets.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Copy application files to target location</div>
+<div class="code-block">Copy-ADTFile -Path "$($adtSession.DirFiles)\Canva.lnk" -Destination "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Canva" -Recurse -FileCopyMode Robocopy -ErrorAction Stop</div>
+<p><strong>Purpose:</strong> Copies necessary application files to their target locations as part of the deployment process.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\Canva_PWA_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\Canva_PWA_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

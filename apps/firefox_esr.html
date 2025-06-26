@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Firefox ESR v128.11.0</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Firefox ESR v128.11.0</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Firefox ESR v128.11.0</div>
+<div class="app-details">
+<strong>Vendor:</strong> Mozilla Corporation | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Firefox ESR (Extended Support Release) version 128.11.0 is a long-term maintenance version of the Mozilla Firefox web browser designed for enterprise and organizational environments. It provides stable, secure browsing with fewer feature updates, ensuring compatibility with internal systems and reducing the need for frequent adjustments. This version includes critical security patches and performance improvements while maintaining a consistent user experience over an extended support cycle.</p>
+<p>The target user base for Firefox ESR consists of IT administrators, educational institutions, and businesses requiring a predictable browser environment for large-scale deployments. It is particularly suited for environments where frequent updates could disrupt workflows or require extensive compatibility testing. Firefox ESR balances security with stability, making it a reliable choice for organizations prioritizing long-term usability over cutting-edge features.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Install Firefox Setup 128.11.0esr using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "Firefox Setup 128.11.0esr.msi" -ArgumentList "/QN TASKBAR_SHORTCUT=false DESKTOPSHORTCUT=false PRIVATE_BROWSING_SHORTCUT=false PREVENT_REBOOT_REQUIRED=true"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Firefox_ESR_v128.11.0_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Execute helper installer</div>
+<div class="code-block">Start-ADTProcess -FilePath "C:\Program Files\Mozilla Firefox\uninstall\helper.exe" -ArgumentList "/S" -WaitForMsiExec</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Firefox_ESR_v128.11.0_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

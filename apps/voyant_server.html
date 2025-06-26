@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Voyant Server v.6.18</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Voyant Server v.6.18</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Voyant Server v.6.18</div>
+<div class="app-details">
+<strong>Vendor:</strong> Voyant Consortium | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Voyant Server version 6.18 by Voyant Consortium is a specialized software application designed to facilitate text analysis and visualization for large-scale datasets. It provides researchers and analysts with tools for processing, exploring, and interpreting textual data through interactive visualizations and statistical summaries. The application is primarily used by academic researchers, digital humanities scholars, and data professionals who require advanced text mining capabilities.</p>
+<p>The software supports a range of analytical functions, including frequency analysis, collocation detection, and trend identification across corpora. Its server-based architecture enables collaborative workflows, allowing multiple users to access and analyze shared datasets simultaneously. Voyant Server is particularly suited for institutions and research teams working with extensive textual collections, such as libraries, universities, and corporate research departments.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Pre-Install Phase</div>
+<p>Preparation steps before the main installation</p>
+<div class="command-description">Create Voyant Server directory</div>
+<div class="code-block">New-ADTFolder -Path "C:\Program Files\Voyant Server"</div>
+<p><strong>Purpose:</strong> Creates the necessary directory structure for the application installation. This ensures all required folders exist before files are copied.</p>
+<div class="command-description">Create Voyant Tools directory</div>
+<div class="code-block">New-ADTFolder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Voyant Tools"</div>
+<p><strong>Purpose:</strong> Creates the necessary directory structure for the application installation. This ensures all required folders exist before files are copied.</p>
+<div class="command-description">Install OpenJDK11U-jdk_x64_windows_hotspot_11.0.27_6 using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "OpenJDK11U-jdk_x64_windows_hotspot_11.0.27_6.msi" -ArgumentList "/QN ALLUSERS=1"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Extract VoyantServer.zip archive</div>
+<div class="code-block">Expand-Archive -Path ".\Files\VoyantServer.zip" -DestinationPath "C:\Program Files\Voyant Server" -Force -ErrorAction Stop</div>
+<p><strong>Purpose:</strong> Extracts the application files from a compressed archive to the installation directory.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Voyant_Server_v2.6.18_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+<div class="command-description">Create application shortcut</div>
+<div class="code-block">New-ADTShortcut -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Voyant Tools\Voyant Tools Online.url" -TargetPath "https://\\[SERVER_NAME]\/" -IconLocation "C:\Program Files\Voyant Server\icon.ico"-Description 'Weblink to Voyant tools Online'</div>
+<p><strong>Purpose:</strong> Creates desktop or start menu shortcuts for easy access to the application.</p>
+<div class="command-description">Copy application files to target location</div>
+<div class="code-block">Copy-ADTFile -Path "C:\Program Files\Voyant Server\Voyant Tools Local Server.lnk" -Destination "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Voyant Tools\" -ErrorAction Continue</div>
+<p><strong>Purpose:</strong> Copies necessary application files to their target locations as part of the deployment process.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Uninstall application using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{0FAD7FEB-3E2C-49A0-ABD7-EB79B7E671D7}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+<div class="command-description">Remove Voyant Tools directory</div>
+<div class="code-block">Remove-ADTFolder -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Voyant Tools\"</div>
+<p><strong>Purpose:</strong> Removes application directories and their contents as part of the uninstallation cleanup process.</p>
+<div class="command-description">Remove Voyant Server directory</div>
+<div class="code-block">Remove-ADTFolder -Path "C:\Program Files\Voyant Server\"</div>
+<p><strong>Purpose:</strong> Removes application directories and their contents as part of the uninstallation cleanup process.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Voyant_Server_v2.6.18_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Sonic Visualiser v5.2.1</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Sonic Visualiser v5.2.1</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Sonic Visualiser v5.2.1</div>
+<div class="app-details">
+<strong>Vendor:</strong> Christopher Cannam | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Sonic Visualiser 5.2.1 is an open-source application designed for analyzing and visualizing audio files, particularly suited for examining spectral, waveform, and time-based audio data. It supports advanced features such as annotation layers, note tracking, and spectrogram displays, enabling detailed examination of audio content. The software is primarily used by researchers, musicologists, and audio engineers who require precise tools for studying audio characteristics without real-time processing constraints.</p>
+<p>The application integrates with Vamp plugins, allowing users to extend its analytical capabilities for tasks like pitch detection, beat tracking, and segmentation. Its interface facilitates comparative analysis by enabling multiple synchronized views of the same audio file. Sonic Visualiser serves as a specialized tool for professionals in audio research, forensic analysis, and music information retrieval, providing in-depth visualization without altering the original audio data.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Install sonic-visualiser-5.2.1-win64 using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "sonic-visualiser-5.2.1-win64.msi" -ArgumentList "/QN ALLUSERS=1"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Install qm-vamp-plugins-1.8.0-win64 using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "qm-vamp-plugins-1.8.0-win64.msi" -ArgumentList "/QN ALLUSERS=1"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+<div class="command-description">Copy application files to target location</div>
+<div class="code-block">Copy-ADTFile -Path "$($adtSession.DirFiles)\sonic-annotator-1.7-win64" -Destination "C:\Program Files\Vamp Plugins" -Recurse</div>
+<p><strong>Purpose:</strong> Copies necessary application files to their target locations as part of the deployment process.</p>
+<div class="command-description">Remove application files</div>
+<div class="code-block">Remove-ADTFile -Path "C:\Users\[USERNAME]\Desktop\Sonic Visualiser.lnk" -ErrorAction Continue</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Sonic_Visualiser_v5.2.1_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Uninstall application using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{70C2DFAE-E718-4973-AE62-54FF68FD0426}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+<div class="command-description">Uninstall application using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{769687F7-150C-4A38-B39C-2187315D1186}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Sonic_Visualiser_v5.2.1_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - BioEdit v7.7.1.0</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - BioEdit v7.7.1.0</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">BioEdit v7.7.1.0</div>
+<div class="app-details">
+<strong>Vendor:</strong> Tom Hall | 
+                    <strong>Architecture:</strong> x86 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>BioEdit is a biological sequence alignment editor designed for Windows systems. It serves as a comprehensive replacement for commonly used DOS sequence alignment editors, providing a rich set of sequence editing, alignment, manipulation, and analysis functions. This application is particularly valuable for researchers and professionals working in bioinformatics, molecular biology, and genetic analysis.</p>
+<p>The software offers an intuitive Windows-based interface that simplifies complex biological sequence operations, making it accessible to both novice and experienced users in the field of computational biology.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Pre-Install Phase</div>
+<p>Preparation steps before the main installation to ensure system compatibility.</p>
+<div class="command-description">Install Visual C++ Redistributable (x86) as a prerequisite</div>
+<div class="code-block">Start-ADTProcess -FilePath "VC_redistx86.exe" -ArgumentList "/Install /Quiet /Norestart" -WaitForMsiExec -ErrorAction Continue</div>
+<p><strong>Purpose:</strong> Installs the Microsoft Visual C++ Redistributable package required for BioEdit to function properly. The installation runs silently without user interaction and continues even if errors occur.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation using the MSI package.</p>
+<div class="command-description">Install the main BioEdit application</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "BioEdit.msi" -ArgumentList "QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of BioEdit using the MSI installer. The "QN" argument ensures a completely quiet installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and registry setup after successful installation.</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKEY_LOCAL_MACHINE\SOFTWARE\InstalledApps\AppPackaging\...\RM\BioEdit_v7.7.1.0_x86"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the BioEdit application from the system.</p>
+<div class="command-description">Uninstall BioEdit using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{691DD9D4-9123-4A4B-833E-7C7C93451964}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Removes BioEdit from the system using its unique MSI product code. The silent uninstallation ensures no user prompts are displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up registry entries and remove tracking information.</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKEY_LOCAL_MACHINE\SOFTWARE\InstalledApps\AppPackaging\...\RM\BioEdit_v7.7.1.0_x86"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT) v4.0.4</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Script Version:</strong> 1.0.0</li>
+<li><strong>Script Date:</strong> 2025-06-24</li>
+<li><strong>Script Author:</strong> Ryan McDonagh</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> MSI-based with prerequisites</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>

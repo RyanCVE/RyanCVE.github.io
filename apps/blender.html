@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ryan McDonagh - Blender v4.4.3</title>
+<link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="window" id="main-window">
+<div class="title-bar">
+<div class="title-bar-text">Ryan McDonagh - Blender v4.4.3</div>
+<div class="title-bar-controls">
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+</div>
+</div>
+<div class="menu-bar">
+<div class="menu-item" onclick="navigateTo('../index.html')">CV</div>
+<div class="menu-item" onclick="toggleMenu('apps-menu')">
+                Applications
+                <div class="dropdown-menu" id="apps-menu"><div class="menu-option" onclick="navigateTo('bioedit.html')">BioEdit v7.7.1.0</div><div class="menu-option" onclick="navigateTo('blender.html')">Blender v4.4.3</div><div class="menu-option" onclick="navigateTo('canva.html')">Canva v</div><div class="menu-option" onclick="navigateTo('dnasp.html')">DNAsp v6.12.03</div><div class="menu-option" onclick="navigateTo('firefox_esr.html')">Firefox ESR v128.11.0</div><div class="menu-option" onclick="navigateTo('git.html')">Git v2.49.0</div><div class="menu-option" onclick="navigateTo('musescore_studio.html')">MuseScore Studio v4.5.2.251141402</div><div class="menu-option" onclick="navigateTo('ollama.html')">Ollama v0.9.0.0</div><div class="menu-option" onclick="navigateTo('openshot.html')">OpenShot v3.3.0</div><div class="menu-option" onclick="navigateTo('sonic_visualiser.html')">Sonic Visualiser v5.2.1</div><div class="menu-option" onclick="navigateTo('voyant_server.html')">Voyant Server v.6.18</div></div>
+</div>
+</div>
+<div class="window-body">
+<div class="app-header">
+<div class="app-title">Blender v4.4.3</div>
+<div class="app-details">
+<strong>Vendor:</strong> Blender Foundation | 
+                    <strong>Architecture:</strong> x64 | 
+                    <strong>Language:</strong> EN | 
+                    <strong>Revision:</strong> 01
+                </div>
+</div>
+<section id="description">
+<h2>Application Description</h2>
+<p>Blender 4.4.3 is a comprehensive open-source 3D creation suite developed by the Blender Foundation, designed for modeling, animation, rendering, compositing, and video editing. It supports a wide range of workflows, including sculpting, texturing, and physics simulations, making it suitable for producing high-quality 3D assets and animations. The software is widely used by professionals in industries such as film production, game development, and architectural visualization, as well as independent artists and researchers requiring advanced 3D tools.</p>
+<p>The application features a robust set of tools for real-time rendering, motion tracking, and procedural content generation, enabling users to create complex visual effects and interactive 3D applications. Blenders cross-platform compatibility and extensible architecture cater to a diverse user base, from hobbyists experimenting with 3D design to studios developing commercial projects. Its integrated pipeline supports collaborative workflows, making it a versatile solution for both individual creators and enterprise teams.</p>
+</section>
+<section id="installation">
+<h2>Installation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Install Phase</div>
+<p>Main application installation</p>
+<div class="command-description">Install blender-4.4.3-windows-x64 using MSI package</div>
+<div class="code-block">Start-ADTMsiProcess -Action Install -FilePath "blender-4.4.3-windows-x64.msi" -ArgumentList "/QN WIXUI_[LICENSE_KEY]=0"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Install Phase</div>
+<p>Configuration and setup after installation</p>
+<div class="command-description">Copy application files to target location</div>
+<div class="code-block">Copy-ADTFile -Path "$($adtSession.DirFiles)\Blender 4.4.lnk" -Destination "C:\ProgramData\Microsoft\Windows\Start Menu\"</div>
+<p><strong>Purpose:</strong> Copies necessary application files to their target locations as part of the deployment process.</p>
+<div class="command-description">Create registry entry for application tracking</div>
+<div class="code-block">Set-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Blender_v4.4.3_x64"</div>
+<p><strong>Purpose:</strong> Creates a custom registry entry for deployment tracking and management purposes. This allows system administrators to monitor and verify the installation status.</p>
+<div class="command-description">Remove application files</div>
+<div class="code-block">Remove-ADTFile -Path "C:\Users\[USERNAME]\Desktop\Blender 4.4.lnk" -ErrorAction SilentlyContinue</div>
+<p><strong>Purpose:</strong> Executes application-specific configuration tasks as part of the deployment process.</p>
+</div>
+</section>
+<section id="uninstallation">
+<h2>Uninstallation Process</h2>
+<div class="phase-section">
+<div class="phase-title">Uninstall Phase</div>
+<p>Remove the application from the system</p>
+<div class="command-description">Uninstall application using MSI product code</div>
+<div class="code-block">Start-ADTMsiProcess -Action Uninstall -ProductCode "{18B187C8-0D7C-4A4F-AA2B-67B10442BC1E}" -ArgumentList "/QN"</div>
+<p><strong>Purpose:</strong> Performs the primary installation of the application using the MSI installer. The quiet mode ensures a completely silent installation with no user interface displayed.</p>
+</div>
+<div class="phase-section">
+<div class="phase-title">Post-Uninstall Phase</div>
+<p>Clean up and remove tracking information</p>
+<div class="command-description">Remove registry tracking entry</div>
+<div class="code-block">Remove-ADTRegistryKey -Key "HKLM:\SOFTWARE\...\Arts\RM\Blender_v4.4.3_x64"</div>
+<p><strong>Purpose:</strong> Removes the custom registry entry created during installation, ensuring complete cleanup of tracking information.</p>
+</div>
+</section>
+<section id="technical-details">
+<h2>Technical Details</h2>
+<ul>
+<li><strong>Deployment Framework:</strong> PowerShell Application Deployment Toolkit (PSADT)</li>
+<li><strong>Supported Operations:</strong> Install, Uninstall, Repair</li>
+<li><strong>Target Platform:</strong> Windows (Enterprise deployment via SCCM/MECM)</li>
+<li><strong>Installation Type:</strong> Automated deployment</li>
+<li><strong>User Interaction:</strong> Silent installation supported</li>
+</ul>
+</section>
+<footer>
+<p><a href="../index.html">← Back to CV</a> | Application packaging by Ryan McDonagh</p>
+</footer>
+</div>
+</div>
+<script src="../js/navigation.js"></script>
+</body>
+</html>
